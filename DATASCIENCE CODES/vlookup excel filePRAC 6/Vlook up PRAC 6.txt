@@ -1,0 +1,47 @@
+Vlook up practical 6 
+
+
+
+(1.) Conditional formatting 
+
+
+1. Select the "Profit" column (Column E).
+2. Go to the "Home" tab on the ribbon.
+3. Click on "Conditional Formatting" in the toolbar.
+4 . Choose "Highlight Cells Rules" and then "Greater Than."
+5. Enter the threshold value as 800.
+6. Customize the formatting options (e.g., choose a fill color).
+7. Click "OK" to apply the rule.
+
+********************************************************************************************
+
+(2.) Vlookup
+
+formula hai bas 
+=VLOOKUP(select M , Then select the whole table , 2, FALSE)
+
+
+=VLOOKUP(A14,A1:E27,2,FALSE)
+
+Book formula u have is 
+=VLOOKUP("M",'[Product Table]Product Table'!A:B,2,FALSE)
+
+*******************************************************************************************
+(3.)Pivot Table 
+
+1.Select the whole table first
+2.go to insert then pivot char and table 
+3.it will open a new worksheet 
+4.Drag Category to X axis and Sales to the Y axis 
+
+**********************************************************************************************
+(4.) Goal Seek
+The cell should contain the profit ka formula that first cell - the second sale 
+
+E17
+1. Data tab
+2. What if Analysis
+3. Goal Seek
+4.cell E17 has the profit formula 
+5. change the value to 1000
+6. Change the cell to C17 $C$17  and it will give you the status and just check it 

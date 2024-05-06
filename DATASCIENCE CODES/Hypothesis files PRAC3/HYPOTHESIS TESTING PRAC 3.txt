@@ -1,0 +1,41 @@
+HYPOTHESIS TESTING 
+
+WITH A EXCEL FILE TIME WAALA BAS SINGLE COLUMN HAI AND 
+
+~~ONE SAMPLE T TEST~~
+
+mistime<-read.csv(file.choose(),header=T)
+
+t.test(mistime$Time, alternative="greater", mu=90)
+
+=============================================================================================
+
+~~~TWO SAMPLE T TEST OR INDEPENDENT T TEST ~~~~~~
+
+mistime2<-read.csv(file.choose(),header=T)
+
+
+t.test(mistime2$Time_G1,mistime2$Time_G2, alternative="two.sided", 
+var.equal=TRUE)
+
+
+=============================================================================================
+
+~~~~~~~~~~~Paired t test(dependent test)~~~~~~~~
+
+
+mistime3<-read.csv(file.choose(),header=T) 
+
+
+
+
+t.test(mistime3$Time_Before,mistime3$Time_After,
+alternative="greater",paired=TRUE)
+
+=============================================================================================
+
+
+> mistime3<-read.csv(file.choose(),header=T) 
+> 
+> t.test(mistime3$Time_G1,mistime3$Time_G2,
++        alternative="two.sided",var.equal =TRUE)

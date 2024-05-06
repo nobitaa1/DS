@@ -1,0 +1,58 @@
+Anova ke liye 3 codes  hai that are done over 3 alag alag excel file khud dataset bana kar karna hai isiliye el alag folder me anova ka 3 excel file daaldungi numbr wise R studio me import karna rahega bas 
+
+
+ANOVA TESTING (3 CODES FTEST ONE WAY AND 2 WAY ) Practica 7
+
+Code 1 for the time waala excel file 
+(1.) F TEST~~~~~~~~~~~~
+
+
+>  mistime2<-read.csv(file.choose(),header=T)
+
+
+> var.test(mistime2$Time_G1,mistime2$Time_G2,alternative = "two.sided")
+
+OP:
+	F test to compare two variances
+
+data:  mistime2$Time_G1 and mistime2$Time_G2
+F = 1.5434, num df = 11, denom df = 13, p-value = 0.4524
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+ 0.4826988 5.2348866
+sample estimates:
+ratio of variances 
+          1.543428 
+
+***********************************************
+(2.) For satindex and depth second code (ONE WAY ANOVA USING R)~~~~~~~
+ 
+
+> satlevel<-read.csv(file.choose(),header=T)
+> annovatable<-aov(formula=satindex~dept,data=satlevel)
+> summary (annovatable)
+
+OP :
+  Df Sum Sq Mean Sq F value Pr(>F)
+dept         1    2.4    2.41   0.046  0.832
+Residuals   18  933.8   51.88               
+
+
+**************************************************
+TWO way anova code 3 and excel file 3~~~~~~~~~~
+
+
+
+> satlevel<-read.csv(file.choose(),header=T)
+> anovatable<- 
++     aov(formula=satindex~dept+exp+dept*exp,data=satlevel)
+> summary (annovatable)
+
+
+
+OP :
+ Df Sum Sq Mean Sq F value Pr(>F)
+dept         1    2.4    2.41   0.046  0.832
+Residuals   18  933.8   51.88               
+> 
+

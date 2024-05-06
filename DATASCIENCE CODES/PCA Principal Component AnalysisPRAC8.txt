@@ -1,0 +1,68 @@
+PCA 
+ practical 8 
+
+principal Component Analysis
+
+
+> data_iris<-iris[1:4]
+> cov_data<-cov(data_iris)
+> Eigen_data<-eigen(cov_data)
+> PCA_data<-princomp(data_iris,cor="False")
+> Eigen_data$values
+op:
+
+
+> PCA_data$sdev^2
+op:
+
+
+
+> PCA_data$loadings[,1:4]
+op:
+
+
+> Eigen_data$vectors
+op:
+
+
+> summary(PCA_data)
+op:
+
+
+> biplot(PCA_data)
+op: Graph
+
+
+> screeplot(PCA_data,type="lines")
+
+
+ 
+> model2 = PCA_data$loadings[,1]
+> model2_scores <- as.matrix(data_iris) %% model2
+> library(class)
+> install.packages("e1071")
+
+
+>library(e1071)
+> mod1<-naiveBayes(iris[,1:4],iris[,5])
+> mod2<-naiveBayes(model2_scores,iris[,5])
+> table(predict(mod1,iris[,1:4]),iris[,5])
+
+op : 
+          
+             setosa versicolor virginica
+  setosa         50          0         0
+  versicolor      0         47         3
+  virginica       0          3        47
+
+
+
+> table(predict(mod2,model2_scores),iris[,5])
+
+op:
+   setosa versicolor virginica
+  setosa         31         25        22
+  versicolor     14         16        15
+  virginica       5          9        13
+
+

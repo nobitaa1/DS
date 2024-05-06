@@ -1,0 +1,98 @@
+k means Clustering (practical 9)
+
+no need for importing any dataset in this 
+
+
+1.Scatter plot sepal length width
+
+
+> install.packages("ggplot2")
+
+> library(ggplot2)
+
+> scatter<-ggplot(data=iris,aes(x=Sepal.Length,y=Sepal.Width))
+
+> scatter + geom_point(aes(color=Species,shape=Species)) + 
++ theme_bw()+
++ xlab("Sepal Length") + ylab("Sepal Width") + 
++ ggtitle("Sepal Length - Width")
+> 
+
+**********************************************
+
+2. ggplot
+
+ggplot(data=iris,aes(Sepal.Length,fill=Species)) +
++ theme_bw() + 
++ geom_density(alpha=0.25)+
++ labs(x="Sepal.Length",title="Species vs Sepal Length")
+
+
+if not this then try this 
+
+ggplot(data=iris,aes(Sepal.Length,fill=Species)) + theme_bw() +  geom_density(alpha=0.25)+ labs(x="Sepal.Length",title="Species vs Sepal Length")
+
+******************************************************
+
+
+3.Density plot 
+
+first code for Sepal Length
+
+> vol <-ggplot(data=iris,aes(x=Sepal.Length))
+> vol + stat_density(aes(ymax=..density.., ymin=-..density.., fill=Species,color=Species),geom="ribbon",position="identity") + facet_grid(.~Species) + coord_flip() + theme_bw()+labs(x="Sepal Length",title="Species vs Sepal Length")
+
+
+
+For Sepal Width 
+
+> vol <-ggplot(data=iris,aes(x=Sepal.Width))
+> vol + stat_density(aes(ymax=..density.., ymin=-..density.., fill=Species,color=Species),geom="ribbon",position="identity") + facet_grid(.~Species) + coord_flip() + theme_bw()+labs(x="Sepal Length",title="Species vs Sepal Width")
+
+
+*********************************************
+
+
+4.Analyze Clustering Tendency
+
+> install.packages("factoextra")
+
+> library(factoextra)
+
+> install.packages("clustertend")
+
+# Another package for hopkins() function
+> library(clustertend)
+
+# 1. Given a vector of numbers or a column of a dataframe
+# Generate uniform random numbers as per its min and max values
+> genx<-function(x){
++ runif(length(x), min(x), (max(x)))
++ }
+
+# 2. Generate random data by applying function over each column
+> random_df <- apply(iris[,-5], 2, genx)
+> random_df <- as.data.frame(random_df)
+
+# 3. Standardize both data sets
+> iris[,-5] <- scale(iris[,-5]) # By default, center = T, scale = T
+> random_df <- scale(random_df)
+
+# 4. Compute Hopkins statistic for iris dataset
+> res <- get_clust_tendency(iris[,-5],
++ n = nrow(iris) -1 , 
++ graph = FALSE)
+
+> res$hopkins_stat
+[1] 0.1815219
+
+# 5. Also calculate using function, hopkins(), 
+# of clustertend package
+> hopkins(iris[,-5], n = nrow(iris) -1)
+$H
+[1] 0.1903924 
+
+
+
+
+
